@@ -15,7 +15,7 @@
         <div class="admin">
           <el-input
             id="user"
-            placeholder="请输入账号"
+            placeholder="请输入正确的账号"
             prefix-icon="el-icon-user-solid"
             v-model="admin"
           >
