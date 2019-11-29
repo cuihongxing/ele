@@ -43,6 +43,7 @@
 // @ is an alias to /src
 import Product from "../../util/api";
 let _http = new Product();
+import Local from '../../local/index';
 export default {
   name: "home",
   data() {
@@ -63,16 +64,20 @@ export default {
       };
       this.$store.state.isLoding = true;
       _http.login(obj).then(res => {
-        console.log(res)
+        console.log(res);
         if (res.data.code == 200) {
-          this.$store.state.isLoding = false;
-          localStorage.setItem(
-            "educatoken",
-            JSON.stringify(res.data.data.token)
-          );
+          // localStorage.setItem(
+          //   "educatoken",
+          //   JSON.stringify(res.data.data.token)
+          // );
+          Local.set("token",res.data.data.token)
           this.$router.push({
             path: "/shouye"
           });
+          this.$message({
+          message: '登录成功',
+          type: 'success'
+        });
         }
       });
     }
@@ -99,7 +104,7 @@ export default {
 }
 .btn {
   text-align: center;
-  button{
+  button {
     margin: 15px;
   }
 }
