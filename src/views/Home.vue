@@ -41,7 +41,6 @@
 </template>
 
 <script>
-
 // @ is an alias to /src
 import Product from "../util/api";
 let _http = new Product();
@@ -80,11 +79,15 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
+<style>
 .is-round {
   margin: 0 auto;
 }
+.el-button--primary {
+  margin-left: 140px;
+}
+</style>
+<style lang="scss" scoped>
 .home {
   overflow: hidden;
 }
@@ -100,10 +103,9 @@ export default {
   border-radius: 5px;
 }
 .btn {
-  text-align: center;
-  button{
-    margin: 15px;
-  }
+  padding-left: 100px;
+  display: flex;
+  margin: 20px auto;
 }
 .login {
   padding-top: 100px;
