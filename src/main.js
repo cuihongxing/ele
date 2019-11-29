@@ -6,7 +6,6 @@ import Axios from "axios";
 // import Axios from "_axios@0.19.0@axios";
 import "./plugins/element.js";
 Vue.prototype.axios = Axios;
-
 Vue.config.productionTip = false;
 new Vue({
   router,

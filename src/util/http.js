@@ -7,9 +7,10 @@ class Http {
       Axios({
         method: params.type || "get",
         url: params.url,
-        data: Qs.stringify(params.data),
+        data: params.data,
         headers: {
-          "Content-Type": "application/json"
+          token: params.data.token,
+          "Content-Type": "application/json;charset=UTF-8"
         }
       }).then(res => {
         resolve(res);
