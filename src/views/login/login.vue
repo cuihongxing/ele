@@ -72,7 +72,7 @@ export default {
           // );
           Local.set("token",res.data.data.token)
           this.$router.push({
-            path: "/shouye"
+            path: "/home"
           });
           this.$message({
           message: '登录成功',
