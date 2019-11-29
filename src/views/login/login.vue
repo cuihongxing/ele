@@ -63,6 +63,7 @@ export default {
       };
       this.$store.state.isLoding = true;
       _http.login(obj).then(res => {
+        console.log(res)
         if (res.data.code == 200) {
           this.$store.state.isLoding = false;
           localStorage.setItem(
@@ -78,15 +79,10 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="scss" scoped>
 .is-round {
   margin: 0 auto;
 }
-.el-button--primary {
-  margin-left: 140px;
-}
-</style>
-<style lang="scss" scoped>
 .home {
   overflow: hidden;
 }
@@ -102,9 +98,10 @@ export default {
   border-radius: 5px;
 }
 .btn {
-  padding-left: 100px;
-  display: flex;
-  margin: 20px auto;
+  text-align: center;
+  button{
+    margin: 15px;
+  }
 }
 .login {
   padding-top: 100px;
