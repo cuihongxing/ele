@@ -31,11 +31,11 @@
             show-password
           ></el-input>
         </div>
-        <div class="btn">
+      </form>
+    </div>
+    <div class="btn">
           <el-button type="primary" @click="login" round>登录</el-button>
           <el-button type="info" round>重置</el-button>
-        </div>
-      </form>
     </div>
     <!-- <Loading v-if="this.$store.state.isLoading"></Loading> -->
   </div>
@@ -71,16 +71,11 @@ export default {
   }
 };
 </script>
-<style>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
 .is-round {
   margin: 0 auto;
 }
-.el-button--primary {
-  margin-left: 140px;
-}
-</style>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
 .hello {
   width: 100%;
   /* height: 314px; */
@@ -92,11 +87,7 @@ export default {
   transform: translateX(-50%);
   border-radius: 5px;
 }
-.btn {
-  padding-left: 100px;
-  display: flex;
-  margin: 20px auto;
-}
+
 .login {
   display: flex;
   flex-direction: column;
@@ -128,6 +119,12 @@ export default {
       border-radius: 50%;
     }
   }
+}
+.btn{
+    text-align: center;
+    button{
+        margin: 20px;
+    }
 }
 .video {
   position: absolute;
