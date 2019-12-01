@@ -50,7 +50,13 @@
             <li>首页</li>
           </ul>
         </el-header>
-        <el-main style="background:#fff;">Main</el-main>
+        <el-main style="background:#fff;">
+
+          <h3 style="fontSize:0.5rem;margin:1rem auto;textAlign:center;" v-show="isShow">
+            干就完了
+          </h3>
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -63,7 +69,8 @@ import Local from '../../local/index'
     data() {
       return {
         isCollapse: true,
-        list:[]
+        list:[],
+        isShow:false
       };
     },
     methods: {
