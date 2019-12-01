@@ -13,32 +13,23 @@
           router
           style="border:1px solid #333744"
         >
-          <el-submenu index="1">
-            <template slot="title">
-              <span slot="title">导航一</span>
+          <el-submenu  :index="item.id" v-for="(item,index) in list" :key="index"  v-if="item.name!='首页'">
+            <template slot="title"  >
+              <span slot="title" :index="item.path">{{item.name}}</span>
             </template>
-            <el-submenu index="1-4">
-              <span slot="title">选项1</span>
-              <el-menu-item index="1-4-1">选项1</el-menu-item>
-            </el-submenu>
-            <el-submenu index="1-4">
-              <span slot="title">选项1</span>
-              <el-menu-item index="1-4-1">选项1</el-menu-item>
-            </el-submenu>
+            
+           
+           <el-menu-item-group :index="items.path" :key="indexs" v-for="(items,indexs) in item.children" v-if="items.children.length<=0">
+             <el-menu-item :index="items.path">{{items.name}}</el-menu-item>
+           </el-menu-item-group>
+
+           <el-submenu :index="v.path" v-for="(v,i) in item.children" :key="i" v-if="v.children.length>0">
+             <span slot="title">{{v.name}}</span>
+              <el-menu-item :index="y.path" v-for="y in v.children" v-if="v.children.length>0">{{y.name}}</el-menu-item>
+           </el-submenu>
+
           </el-submenu>
-          <el-submenu index="1">
-            <template slot="title">
-              <span slot="title">导航er</span>
-            </template>
-            <el-submenu index="1-4">
-              <span slot="title">选项1</span>
-              <el-menu-item index="1-4-1">选项1</el-menu-item>
-            </el-submenu>
-            <el-submenu index="1-4">
-              <span slot="title">选项1</span>
-              <el-menu-item index="1-4-1">选项1</el-menu-item>
-            </el-submenu>
-          </el-submenu>
+         
         </el-menu>  
       </el-aside>
       <el-container>
@@ -65,10 +56,14 @@
   </div>
 </template>
 <script>
+import Product from '../../util/api'
+let _product = new Product()
+import Local from '../../local/index'
   export default {
     data() {
       return {
-        isCollapse: true
+        isCollapse: true,
+        list:[]
       };
     },
     methods: {
@@ -78,6 +73,13 @@
       handleClose(key, keyPath) {
         console.log(key, keyPath);
       }
+    },
+    created () {
+      let token = Local.get('token')
+      _product.List(token).then(res=>{
+        this.list = res.data.data.sysMenu
+        console.log(this.list)
+      })
     }
   }
 </script>
